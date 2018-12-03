@@ -1,14 +1,15 @@
-package com.example.mehed.sqlemailvalidation;
+package com.example.mehed.sqlemailvalidation.activities;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.mehed.sqlemailvalidation.R;
+import com.example.mehed.sqlemailvalidation.databases.DataBaseHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String password = Password.getText().toString();
 
         if (v.getId() == R.id.SignBT) {
-            boolean result = dataBaseHelper.FINDPASS(username, password);
+            boolean result = dataBaseHelper.checkEmailPassword(username, password);
 
             if (result) {
                 Intent intent = new Intent(this, WellcomeActivity.class);
