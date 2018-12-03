@@ -1,10 +1,10 @@
 package com.example.mehed.sqlemailvalidation.models;
 
-public class PersonDetails {
+public class PersonDetail {
 
     private String name, email, username, password;
 
-    public PersonDetails(String name, String email, String password, String username) {
+    public PersonDetail(String name, String email, String password, String username) {
         this.name = name;
         this.email = email;
         this.username = username;

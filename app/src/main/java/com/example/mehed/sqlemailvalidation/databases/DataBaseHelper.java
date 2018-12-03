@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-import com.example.mehed.sqlemailvalidation.models.PersonDetails;
+import com.example.mehed.sqlemailvalidation.models.PersonDetail;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private Context context;
@@ -46,7 +46,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long insertData(PersonDetails personDetails) {
+    public long insertData(PersonDetail personDetails) {
         DataBaseHelper dataBaseHelper = new DataBaseHelper(context);
         SQLiteDatabase sqLiteDatabase = dataBaseHelper.getWritableDatabase();
 

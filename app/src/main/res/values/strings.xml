@@ -7,4 +7,5 @@
     <string name="create_an_account">Create An Account</string>
     <string name="name">Name: </string>
     <string name="email">Email: </string>
+    <string name="welcome_to_profile">Welcome To Profile</string>
 </resources>
