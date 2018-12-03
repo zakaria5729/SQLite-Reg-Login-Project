@@ -11,25 +11,24 @@ import com.example.mehed.sqlemailvalidation.R;
 import com.example.mehed.sqlemailvalidation.databases.DataBaseHelper;
 import com.example.mehed.sqlemailvalidation.models.PersonDetails;
 
-public class EmailSgnUpActivity extends AppCompatActivity {
+public class EmailSignUpActivity extends AppCompatActivity {
 
     private EditText username, email, password, name;
-     Button btnSignUp;
+    //private Button signUp;
 
-    DataBaseHelper dataBaseHelper;
+    private DataBaseHelper dataBaseHelper;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_sgn_up);
-        username = findViewById(R.id.UsernameBT);
-        email = findViewById(R.id.EmailBT);
-        password = findViewById(R.id.PasswordBT);
-        name = findViewById(R.id.NameBT);
 
-        btnSignUp = findViewById(R.id.SignupBT);
+        username = findViewById(R.id.etUserNameForSignUp);
+        email = findViewById(R.id.etEmail);
+        password = findViewById(R.id.etPasswordForSignUp);
+        name = findViewById(R.id.etName);
+        //signUp = findViewById(R.id.btnSignUp); // no need to find this cz here we use xml onClick method
 
         dataBaseHelper = new DataBaseHelper(this);
-
     }
 
     public void Save(View view) {
@@ -38,10 +37,10 @@ public class EmailSgnUpActivity extends AppCompatActivity {
         String pass = password.getText().toString();
         String myName = name.getText().toString();
 
-        PersonDetails personDetails = new PersonDetails(myName, emailAdd,user, pass);
+        PersonDetails personDetails = new PersonDetails(myName, emailAdd, user, pass);
+        long rowId = dataBaseHelper.insertData(personDetails);
 
-        long rowid = dataBaseHelper.insertData(personDetails);
-        if (rowid > 0) {
+        if (rowId > 0) {
             Toast.makeText(this, "DATA is Inserted", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "DATA is Not Inserted", Toast.LENGTH_SHORT).show();

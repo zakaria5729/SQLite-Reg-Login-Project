@@ -2,7 +2,7 @@ package com.example.mehed.sqlemailvalidation.models;
 
 public class PersonDetails {
 
-    private String name,email,username, password;
+    private String name, email, username, password;
 
     public PersonDetails(String name, String email, String password, String username) {
         this.name = name;

@@ -13,48 +13,45 @@ import com.example.mehed.sqlemailvalidation.databases.DataBaseHelper;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText Username, Password;
-    Button Signin, Signup;
-
+    private EditText usernameEt, passwordEt;
+    private Button signInBtn, createAccountBtn;
 
     private DataBaseHelper dataBaseHelper;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Username = findViewById(R.id.btUsername);
-        Password = findViewById(R.id.btPassword);
 
-        Signin = findViewById(R.id.SignBT);
-        Signup = findViewById(R.id.btSignUp);
+        usernameEt = findViewById(R.id.etUserName);
+        passwordEt = findViewById(R.id.etPassword);
+        signInBtn = findViewById(R.id.btSignIn);
+        createAccountBtn = findViewById(R.id.btCreateAccount);
 
-        Signin.setOnClickListener(this);
-        Signup.setOnClickListener(this);
+        signInBtn.setOnClickListener(this);
+        createAccountBtn.setOnClickListener(this);
 
         dataBaseHelper = new DataBaseHelper(this);
     }
 
     @Override
     public void onClick(View v) {
-        String username = Username.getText().toString();
-        String password = Password.getText().toString();
+        String username = usernameEt.getText().toString();
+        String password = passwordEt.getText().toString();
 
-        if (v.getId() == R.id.SignBT) {
+        if (v.getId() == R.id.btSignIn) {
             boolean result = dataBaseHelper.checkEmailPassword(username, password);
 
             if (result) {
                 Intent intent = new Intent(this, WellcomeActivity.class);
                 startActivity(intent);
+                finish();
             } else {
-                Toast.makeText(this, "etUsername Or etPassword is not correct", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Username or password is not correct", Toast.LENGTH_SHORT).show();
             }
 
-
-        } else if (v.getId() == R.id.btSignUp) {
-            Intent intent = new Intent(MainActivity.this, EmailSgnUpActivity.class);
+        } else if (v.getId() == R.id.btCreateAccount) {
+            Intent intent = new Intent(MainActivity.this, EmailSignUpActivity.class);
             startActivity(intent);
-
         }
     }
-
 }

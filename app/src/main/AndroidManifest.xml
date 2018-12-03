@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.EmailSgnUpActivity" />
+        <activity android:name=".activities.EmailSignUpActivity" />
         <activity android:name=".activities.WellcomeActivity"></activity>
     </application>
 
