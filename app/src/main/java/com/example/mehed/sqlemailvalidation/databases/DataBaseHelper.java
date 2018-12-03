@@ -10,8 +10,7 @@ import android.widget.Toast;
 import com.example.mehed.sqlemailvalidation.models.PersonDetails;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    private DataBaseHelper dataBaseHelper;
-    public Context context;
+    private Context context;
 
     private static final String DATABASE_NAME = "information";
     private static final String TABLE_NAME = "Email";
@@ -48,6 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public long insertData(PersonDetails personDetails) {
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(context);
         SQLiteDatabase sqLiteDatabase = dataBaseHelper.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -60,9 +60,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean checkEmailPassword(String username, String password) {
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(context);
         SQLiteDatabase sqLiteDatabase = dataBaseHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
         boolean result = false;
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
         if (cursor.getCount() == 0) {
             Toast.makeText(context, "No data Found", Toast.LENGTH_SHORT).show();
         } else {
